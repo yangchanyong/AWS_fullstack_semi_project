@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chanyongyang.mapper.CartMapper">
+
+	<!-- 장바구니 추가 -->
+	<insert id="insert">
+		insert into tbl_cart(codeNo, cartCnt, id, proPrice) values(#{codeNo}, #{cartCnt}, #{id}, (select proSalePrice*#{cartCnt} from tbl_product where codeNo=#{codeNo}))
+	</insert>
+
+	<!-- 장바구에 담긴 상품의 회원, 상품명, 가격, 상품번호, 를 조회할 수 있는 resultMap -->
+	<!-- 
+ 	<resultMap id="getResultMap" type="com.chanyongyang.domain.MemberVO">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+
+		<association property="cart" javaType="com.chanyongyang.domain.CartVO">
+			<id column="codeNo" property="codeNo" />
+			<result column="cartCnt" property="cartCnt" />
+		</association>
+		
+		<collection property="product" ofType="com.chanyongyang.domain.ProductVO">
+			<id column="codeNo" property="codeNo" />
+			<result column="proName" property="proName" />
+		</collection>
+	</resultMap> -->
+
+	<!-- 장바구에 담긴 상품의 회원, 상품명, 가격, 상품번호, 를 조회-->
+	
+	<select id="getList" resultType="cart">
+		select id, name, proName, cartCnt, proSalePrice*cartCnt as salePrice, proSalePrice, codeNo, proCnt
+		from tbl_cart 
+		join tbl_procode 
+		using(codeNo)
+		join tbl_product 
+		using(codeNo)
+		join tbl_member 
+		using(id)
+		where id=#{id}
+	</select>  
+<!-- and  -->
+	<!-- 상품의 수량을 변경 -->
+	<update id="update">
+		update tbl_cart set cartCnt=#{cartCnt}, proPrice=(select proSalePrice*#{cartCnt} from tbl_product where codeNo=#{codeNo})  where codeNo=#{codeNo} and id=#{id}
+	</update>
+
+	<!-- 상품 삭제 -->
+	<delete id="delete">
+	delete from tbl_cart where codeNo=#{codeNo} and id=#{id}
+	</delete>
+	
+	<!-- 회원탈퇴시 상품 삭제 -->
+	<delete id="deleteData">
+		delete from tbl_cart where id = #{id}
+	</delete>
+	
+	<!-- 해당회원의 단일 상품 조회 -->
+	<select id="getSelectOne"  parameterType="map" resultType="cart">
+		select * from tbl_cart where codeNo=#{codeNo} and id=#{id}
+	</select>
+	
+	<!-- 구매 후 장바구니 삭제 -->
+	<delete id="deleteAll">
+		delete from tbl_cart where id=#{id};
+	</delete>
+
+</mapper>

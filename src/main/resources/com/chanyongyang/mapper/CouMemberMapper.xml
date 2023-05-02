@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chanyongyang.mapper.CouMemberMapper">
+
+	<!-- 쿠폰 리스트 조회 -->
+	<select id="couList" resultType="coumember">
+	select * from tbl_coumember 
+	join tbl_coupon
+	using(couNo)
+	where id = #{id}
+	</select>
+	
+	<!-- 쿠폰 단일 조회 -->
+	<select id="get" resultType="coumember">
+	select * 
+	from tbl_coumember 
+	join tbl_coupon
+	using(couNo)
+	where id = #{id} and coumemberNo = #{coumemberNo}
+	</select>
+	
+	<!-- 쿠폰 수정 -->
+	<update id="updateCouCnt">
+		update tbl_coumember set couCnt = couCnt-1 where id=#{id} and coumemberNo=#{coumemberNo}
+	</update>
+	
+	<!-- 기본 값 설정 -->
+	<insert id="defaultInsert">
+	insert into tbl_coumember(couNo, couCnt, id) values (1, 5, #{id})
+	</insert>
+	
+	<!-- 회원이 보유하고 있는 쿠폰 삭제 -->
+	<delete id="deleteData">
+		delete from tbl_coumember where id = #{id}
+	</delete>
+	
+</mapper>

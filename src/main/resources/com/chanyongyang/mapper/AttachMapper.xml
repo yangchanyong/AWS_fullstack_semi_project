@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chanyongyang.mapper.AttachMapper">
+  
+  <insert id="insertReviewAttach">
+  insert into tbl_attach(uuid, origin, image, path, rno) values(#{uuid}, #{origin}, #{image}, #{path}, #{rno})
+  </insert>
+  
+  <insert id="insertBoardAttach">
+  	insert into tbl_attach (uuid, origin, image, path, bno) values(#{uuid}, #{origin}, #{image}, #{path}, #{bno})
+  </insert>
+  
+  <select id="findBy" resultType="attach">
+  	select * from tbl_attach where rno = #{rno};
+  </select>
+  
+  <delete id="delete">
+  	delete from tbl_attach where uuid = #{uuid};
+  </delete>
+  
+  <delete id="deleteAll">
+  	delete from tbl_attach where rno = #{rno};
+  </delete>
+<!--     <insert id="insert"> -->
+<!--   insert into tbl_attach values(#{uuid}, #{origin}, #{path}, #{name}, #{image}, #{bno}) -->
+<!--   </insert> -->
+  
+  
+<!--   <select id="findBy" resultType="attach"> -->
+<!--   	select * from tbl_attach where bno = #{bno}; -->
+<!--   </select> -->
+</mapper>

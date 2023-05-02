@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chanyongyang.mapper.PayMentMapper">
+<!-- 결제 추가 -->
+<insert id="insert">
+	insert into tbl_payment(payCode, id, payMethod, cardCompany, cardNumber, installment) values(#{payCode}, #{id}, #{payMethod}, #{cardCompany}, #{cardNumber}, #{installment})
+</insert>
+<!-- 결제내역 단일조회 -->
+<select id="get" resultType="payment">
+	select * from tbl_payment where payNo=#{payNo} and id=#{id};
+</select>
+<!-- 결제내역 번호조회 -->
+<select id="getPayNo" resultType="payment">
+	select * from tbl_payment where payCode=#{payCode} and id=#{id};
+</select>
+<!-- 결제내역 목록조회 -->
+<select id="getList" resultType="payment">
+	select * from tbl_payment where id=#{id};
+</select>
+
+<!-- 결제내역 목록조회(관리자용) -->
+<select id="getAList" resultMap="orderInfo">
+	select tp.payNo, ord.codeNo, tpro.proName, sum(ord.proPrice) totalPrice, count(ord.cartCnt) cartcnt, regdate, ord.id 
+	from tbl_payment tp 
+	join tbl_order ord
+	using(payNo)
+	join tbl_product tpro
+	using(codeNo)
+	group by tp.payNo
+	order by tp.payNo desc;
+</select>
+
+<!-- 결제내역 상세 조회(관리자용) -->
+
+<resultMap type="order" id="orderInfo">
+	<result property="orderNo" column="orderNo"/>
+  	<result property="addrNo" column="addrNo"/>
+  	<result property="codeNo" column="codeNo"/>
+  	<result property="cartCnt" column="cartCnt"/>
+  	<result property="proPrice" column="proPrice"/>
+  	<result property="id" column="id"/>
+  	<result property="coumemberNo" column="coumemberNo"/>
+  	<result property="payNo" column="payNo"/>
+  	<result property="regDate" column="regDate"/>
+</resultMap>
+
+<update id="updateData">
+	update tbl_payment
+	set id = 'deleteuser'
+	where id = #{id}
+</update>
+
+</mapper>

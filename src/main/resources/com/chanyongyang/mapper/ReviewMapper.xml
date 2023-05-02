@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.chanyongyang.mapper.ReviewMapper">
+ 	
+ 		<!-- 게시글 목록 조회 -->
+	 <select id="getList" resultType="review">
+		select * 
+		from tbl_review
+		where rno > 0
+		order by rno desc
+		<!-- limit 10 offset 0; -->
+	 </select>
+	 
+	 <!-- 게시글 목록 조회 -->
+	 <select id="getListByCodeNo" resultMap="reviewMap">
+		select * 
+		from tbl_review
+		left join tbl_attach ta USING (rno)
+		where rno > 0
+		and codeNo = #{codeNo}
+		order by rno desc
+		<!-- limit 10 offset 0; -->
+	 </select>
+	 <!-- 게시글 목록 조회 -->
+	 <select id="getListById" resultMap="reviewMap">
+		select * 
+		from tbl_review
+		left join tbl_attach ta USING (rno)
+		where rno > 0
+		and id = #{id}
+		order by rno desc
+		<!-- limit 10 offset 0; -->
+	 </select>
+	 
+	 <select id="getTotalReviewCnt" resultType="int">
+	 	select count(*) from tbl_review where codeNo = #{codeNo}
+	 </select>
+
+	<insert id="insert">
+		insert into tbl_review (rno, content, writer, id, codeNo) 
+		values (nextval(seq_review), #{content}, #{writer}, #{id}, #{codeNo})
+	</insert>
+	
+	<insert id="insertSelectKey">
+	  <selectKey keyProperty="rno" order="BEFORE" resultType="long">
+<!--   select nextval(seq_board) -->
+		select nextval(seq_review) from dual
+	  </selectKey>
+	  	insert into tbl_review (rno, content, writer, id, codeNo) 
+		values (#{rno}, #{content}, #{writer}, #{id}, #{codeNo})
+  	</insert>
+  
+<!--   	상품 코드 및 아이디가 존재하면 해당 리뷰의 갯수를 불러와서 리뷰의 작성 여부를 따진다.  -->
+  	<select id="selectExistsReview" resultType="int">
+	  	select count(*) cnt from tbl_review where codeNo = #{codeNo} and id = #{id} and exists
+		(select distinct codeNo, id from tbl_order where codeNo = #{codeNo} and id = #{id})
+	</select>
+  
+	<!--   글 조회시 쿼리문 -->
+	  <select id="selectOneByRno" resultMap="reviewMap">
+	  	SELECT * FROM tbl_review tr
+	  	left join tbl_attach ta USING (rno) 
+	  	WHERE rno = #{rno}
+	  </select>
+	  
+  	  <select id="selectOne" resultMap="reviewMap">
+	  	SELECT * FROM tbl_review tr
+	  	left join tbl_attach ta USING (rno) 
+	  	WHERE codeNo = #{codeNo} and id = #{id}
+	  </select>
+	
+	<delete id="delete">
+		delete from tbl_review where rno = #{rno}
+	</delete>
+	
+	<select id="getPaidInfoByCodeNo">
+		select * from tbl_review tr
+		join tbl_order to2
+		using (codeNo, id)
+		join tbl_product tp
+		using (codeNo);
+	</select>
+		
+	<update id="updateData">
+		update tbl_review 
+		set id = 'deleteuser', writer = (
+			select name 
+			from tbl_member 
+			where id = 'deleteuser'
+			)
+		where id = #{id}
+	</update>
+	
+	<select id="getListCodeNo" resultMap="reviewMap">
+		select * 
+		from tbl_review
+		left join tbl_attach USING (rno)
+		where rno > 0
+		and codeNo=#{codeNo}
+		order by rno desc
+		<!-- limit 10 offset 0; -->
+	 </select>
+	
+   <resultMap type="review" id="reviewMap">
+  	<result property="rno" column="rno"/>
+  	<result property="content" column="content"/>
+  	<result property="writer" column="writer"/>
+  	<result property="id" column="id"/>
+  	<result property="regdate" column="regdate"/>
+  	<result property="codeNo" column="codeNo"/>
+  	<collection property="attachs" resultMap="attachMap"/>
+  </resultMap>
+  
+  <resultMap type="attach" id="attachMap">
+  	<result property="uuid" column="uuid"/>
+  	<result property="origin" column="origin"/>
+  	<result property="image" column="image"/>
+  	<result property="path" column="path"/>
+  	<result property="rno" column="rno"/>
+  </resultMap>
+ </mapper>

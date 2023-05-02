@@ -1,0 +1,10 @@
+.classpath
+.project
+.springBeans
+src/main/webapp/resources/vendor
+target
+.settings
+jdbc.properties
+jdbc2.properties
+JDBCTests.java
+.factorypath

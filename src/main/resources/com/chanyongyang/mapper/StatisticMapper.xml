@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chanyongyang.mapper.StatisticMapper">
+
+	<!-- 통계 조회 -->
+<select id="getSalesMonthRecord" resultType="statistic">
+	select sum(tp.proBuyPrice) income , sum(tp.proSalePrice) sales, regdate
+	from tbl_statistic ts 
+	join tbl_order ord
+	using (payNo)
+	join tbl_product tp 
+	using (codeNo)
+	where date_format(regdate, 'yyyy-mm-dd') 
+	between date_format(last_day(#{ord.regdate} - interval 1 month) + interval 1 day, 'yyyy-mm-dd') 
+	and  date_format(last_day(#{ord.regdate}) + interval 1 day, 'yyyy-mm-dd');
+</select>
+<select id="getSalesDayRecord" resultType="statistic">
+	select sum(tp.proBuyPrice) income , sum(tp.proSalePrice) sales, regdate
+	from tbl_statistic ts 
+	join tbl_order to2
+	using (payNo)
+	join tbl_product tp 
+	using (codeNo)
+	where date_format(regdate, 'yyyy-mm-dd')  = date_format('2023-04-21', 'yyyy-mm-dd');
+</select>
+
+
+</mapper>	

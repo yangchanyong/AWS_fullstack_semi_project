@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chanyongyang.mapper.CouponMapper">
+
+	<select id="getList" resultType="coupon">
+		select * 
+		from tbl_coupon
+		where couNo > 0
+		order by couNo desc
+	</select>
+
+	<select id="selectOne" resultType="coupon">
+		select * 
+		from tbl_coupon
+		where couNo = #{couNo}
+	</select>
+
+
+	<insert id="insert">
+		insert into tbl_coupon(couNo, couName, couPrice) values (nextval(seq_coupon), #{couName} , #{couPrice})
+	</insert>
+	
+	<update id="update">
+		update tbl_coupon set 
+		couName = #{couName},
+		couPrice = #{couPrice}
+		where couNo = #{couNo}
+	</update>
+	
+	<delete id="delete">
+		delete from tbl_coupon where couNo = #{couNo}
+	</delete>
+	
+	
+	
+</mapper>

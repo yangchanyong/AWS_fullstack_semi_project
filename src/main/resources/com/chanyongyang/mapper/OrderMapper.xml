@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chanyongyang.mapper.OrderMapper">
+
+<!-- 주문내역 추가 -->
+<insert id="insert"><!--쿠폰 시작하면 coumemeberNo쓸 것   -->
+	<if test="coumemberNo != 0">
+	insert into tbl_order(codeNo, cartCnt, proPrice, id, payNo, addrNo, coumemberNo) values(#{cart.codeNo}, #{cart.cartCnt}, #{cart.salePrice}, #{cart.id}, #{payNo}, #{addrNo}, #{coumemberNo})
+	</if>
+	<if test="coumemberNo == 0">
+	insert into tbl_order(codeNo, cartCnt, proPrice, id, payNo, addrNo) values(#{cart.codeNo}, #{cart.cartCnt}, #{cart.salePrice}, #{cart.id}, #{payNo}, #{addrNo})
+	</if>
+</insert>
+<!-- 주문내역 단일조회 -->
+<select id="get" resultType="order">
+	select * from tbl_order where payNo=#{payNo} and id=#{id};
+</select>
+
+<!-- 주문내역 단일조회 -->
+<select id="getSelectOne" resultType="order">
+	select codeNo, proName, cartCnt, proPrice, (select sum(proPrice)from tbl_order where payNo = #{payNo}) as totalPrice, couMemberNo from tbl_order join tbl_product using(codeNo) where payNo = #{payNo} and id=#{id}
+</select> 
+<!-- 주문내역 목록조회 -->
+<select id="getList" resultType="order">
+	select orderNo, payNo, proName, a.regDate, cartCnt, codeNo, count(orderNo)as orderNoCnt, a.coumemberNo,
+	sum(proPrice)-IFNULL(couPrice, 0) as totalPrice		
+	from tbl_coupon tc 
+	join tbl_coumember tc2 using(couNo) 
+	right join tbl_order a using(coumemberNO) 
+	join tbl_product using (codeNo)
+	where a.id=#{id}
+	group  by (payNo)
+	ORDER BY a.regDate desc
+</select>
+
+<!-- 주문내역 삭제 -->
+<delete id="delete">
+	delete from tbl_order where payNo=#{payNo} and id=#{id};
+</delete>
+<!-- 회원 탈퇴시 주문내역 삭제 -->
+<delete id="deleteData">
+	delete from tbl_order where id = #{id}
+</delete>
+
+</mapper>

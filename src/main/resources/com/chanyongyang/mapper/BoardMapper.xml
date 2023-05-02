@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.chanyongyang.mapper.BoardMapper">
+	<sql id="category">
+		<if test="category == 1">
+			(id, title, content, writer, regDate, category) 
+				select #{id}, #{title}, #{content}, (
+					select name
+					from tbl_member
+					where id = #{id}
+				)
+				, now(), #{category}
+		</if>
+		<if test="category == 2">
+			(id, title, content, company, addr, email, writer, phone, regDate, category) 
+				select #{id}, #{title}, #{content}, #{company}, #{addr}, (
+					select email 
+					from tbl_member 
+					where id = #{id}
+				), (
+					select name
+					from tbl_member
+					where id = #{id}
+				), (
+					select phone
+					from tbl_member
+					where id = #{id}
+				)
+				, now(), #{category}
+		</if>
+	</sql>
+	
+	<!-- 게시글 목록 조회 -->
+	 <select id="getList" resultType="board">
+		select bno, id, title, content, adminGrant, writer, a.regDate from tbl_board a
+		join tbl_member b using(id)
+		join tbl_grant c using(grantNo)
+		where category = #{category}
+		order by bno desc
+		limit #{amount} offset #{offset}
+	 </select>
+	 
+	 <select id="getListId" resultType="board">
+	 	select * from tbl_board where id = #{id}
+	 	and category = 2
+	 	order by bno desc
+	 </select>
+
+	<select id="getListWithPaging" resultType="board">
+		select count(*) 
+		from tbl_board
+		where category = #{category}
+		order by bno desc
+	</select>
+	
+	<select id="getTotalCnt" resultType="int">
+		select count(*) 
+		from tbl_board
+		where category = #{category}
+		order by bno desc;
+	</select>
+	
+<!-- 	<insert id="insert">
+		insert into tbl_board (title, content, writer, category) 
+		values (#{title}, #{content}, #{writer}, #{category})
+	</insert>
+ -->
+<!-- 	<insert id="insert">
+			insert into tbl_board (id, title, content, writer, regDate, category) 
+			values (#{id}, #{title},#{content}, (
+				select name 
+				from tbl_member
+				where id = #{id}
+			), now(), #{category});
+	</insert>
+ -->
+ 	<insert id="insert">
+				insert into tbl_board 
+				<include refid="category"></include>
+				from tbl_member a
+				join tbl_grant b using(grantNo)
+				where a.id = #{id} and b.adminGrant = (
+					select adminGrant from tbl_grant
+					join tbl_member using(grantNo)
+					where id = #{id})
+	</insert>
+	
+ 	<!-- <insert id="insert">
+				insert into tbl_board 
+				(id, title, content, writer, regDate, category) 
+				select #{id}, #{title}, #{content}, (
+					select name
+					from tbl_member
+					where id = #{id}
+				)
+				, now(), #{category}
+				from tbl_member a
+				join tbl_grant b using(grantNo)
+				where a.id = #{id} and b.adminGrant = (
+					select adminGrant from tbl_grant
+					join tbl_member using(grantNo)
+					where id = #{id})
+	</insert> -->
+	
+	<select id="read" resultType="board">
+		select * from tbl_board where bno = #{bno}
+	</select>
+	
+	<delete id="delete">
+		delete from tbl_board where bno = #{bno}
+	</delete>
+	
+	<delete id="deleteData">
+		delete from tbl_board where id = #{id}
+	</delete>
+	
+	<update id="update">
+		update tbl_board set
+		title = #{title},
+		content = #{content},
+		updatedate = now()
+		where bno = #{bno}
+	</update>
+	
+  <resultMap type="board" id="boardMap">
+  	<result property="bno" column="bno"/>
+  	<result property="content" column="content"/>
+  	<result property="writer" column="writer"/>
+  	<result property="regdate" column="regdate"/>
+  	<result property="codeNo" column="codeNo"/>
+  	<collection property="attachs" resultMap="attachMap"/>
+  </resultMap>
+  
+  <resultMap type="attach" id="attachMap">
+  	<result property="uuid" column="uuid"/>
+  	<result property="origin" column="origin"/>
+  	<result property="image" column="image"/>
+  	<result property="path" column="path"/>
+  	<result property="bno" column="bno"/>
+  </resultMap>
+	
+ </mapper>
+ 
