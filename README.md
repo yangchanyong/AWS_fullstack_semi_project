@@ -32,7 +32,8 @@
     Spring Legacy Project를 활용하여 사용자의 상품 구매 시 필요한 전자상거래 구현
     <br>
     <p>작업기간 : 2023.03.24~2023.04.26</p>
-    <a href="https://pf3.chanyongyang.com/ target="_blank">View Demo</a>
+    <a href="https://pf3.chanyongyang.com/" target="_blank">View Demo</a>
+  </p>
 </div>
 
 
