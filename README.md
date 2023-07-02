@@ -32,7 +32,8 @@
     Spring Legacy Project를 활용하여 사용자의 상품 구매 시 필요한 전자상거래 구현
     <br>
     <p>작업기간 : 2023.03.24~2023.04.26</p>
-    <a href="https://pf3.chanyongyang.com/ target="_blank">View Demo</a>
+    <a href="https://pf3.chanyongyang.com/" target="_blank">View Demo</a>
+  </p>
 </div>
 
 
@@ -78,18 +79,14 @@ Spring, JSP, MariaDB를 활용하여 식자재 쇼핑몰 구현
 
 ### Built With
 
- <img src="https://img.shields.io/badge/jsp-white?style=flat&logo=jsp&logoColor=black"/>
- <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=black"/>
- <img src="https://img.shields.io/badge/jquery-0868AB?style=flat&logo=jquery&logoColor=white"/> 
- <img src="https://img.shields.io/badge/Bootstrap5-magenta?style=flat&logo=Bootstrap&logoColor=black"/><br>
- <img src="https://img.shields.io/badge/Java-white?style=flat&logo=java&logoColor=white"/>
- <img src="https://img.shields.io/badge/Spring-green?style=flat&logo=spring&logoColor=white"/><br>
- <img src="https://img.shields.io/badge/mariaDB-lightgray?style=flat&logo=mariadb&logoColor=white"/><br>
- <img src="https://img.shields.io/badge/Tomcat-orange?style=flat&logo=Tomcat&logoColor=white"/><br>
-
-
-
-
+<img src="https://img.shields.io/badge/jsp-white?style=flat&logo=jsp&logoColor=black"/>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=black"/>
+<img src="https://img.shields.io/badge/jquery-0868AB?style=flat&logo=jquery&logoColor=white"/> 
+<img src="https://img.shields.io/badge/Bootstrap5-magenta?style=flat&logo=Bootstrap&logoColor=black"/><br>
+<img src="https://img.shields.io/badge/Java-white?style=flat&logo=java&logoColor=white"/>
+<img src="https://img.shields.io/badge/Spring-green?style=flat&logo=spring&logoColor=white"/><br>
+<img src="https://img.shields.io/badge/mariaDB-lightgray?style=flat&logo=mariadb&logoColor=white"/><br>
+<img src="https://img.shields.io/badge/Tomcat-orange?style=flat&logo=Tomcat&logoColor=white"/><br>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
