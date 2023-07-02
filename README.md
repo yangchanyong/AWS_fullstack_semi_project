@@ -52,15 +52,38 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#사전준비">사전준비</a></li>
-        <li><a href="#설치">설치</a></li>
+	<li><a href="#저장소 복제">저장소 복제</a></li>
+        <li><a href="#데이터베이스 구성">데이터베이스 구성</a></li>
+	<li><a href="#데이터베이스 테이블 생성 쿼리">데이터베이스 테이블 생성 쿼리</a></li>
+	<li><a href="#데이터베이스 연결">데이터베이스 연결</a></li>
+	<li><a href="#설치">설치</a></li>
       </ul>
     </li>
-    <li><a href="#사용방법">사용방법</a></li>
+    <li>
+	<a href="#사용방법 및 기능소개">사용방법 및 기능소개</a>
+	  <ul>
+   		<li><a href="#기능소개">기능소개</a></li>
+		<li><a href="#사용방법">사용방법</a></li>
+	  </ul>
+    </li>
     <li><a href="#요구사항">요구사항</a></li>
-    <li><a href="#Team">Team</a></li>
-    <li><a href="#Etc">Etc..</a></li>
+    <li><a href="#Team">Collaborator</a></li>
+    <li>
+	    <a href="#Etc">Etc..</a>
+	    <ul>
+		    <li><a href="#작업서류">작업서류</a></li>
+		    <li><a href="#PPT">PPT</a></li>
+		    <li><a href="#Digital Prototyping">Digital Prototyping</a></li>
+		    <li><a href="#프로젝트 후기">프로젝트 후기</a></li>
+	    </ul>
+    </li>
     <li><a href="#Contact">Contact</a></li>
-    <li><a href="#Acknowledgments">Acknowledgments</a></li>
+    <li>
+	    <a href="#Acknowledgments">Acknowledgments</a>
+	    <ul>
+		    <li><a href="#References">References</a></li>
+	    </ul>
+    </li>
   </ol>
 </details>
 
@@ -78,15 +101,12 @@ Spring, JSP, MariaDB를 활용하여 식자재 쇼핑몰 구현
 
 
 ### Built With
-
-<img src="https://img.shields.io/badge/jsp-white?style=flat&logo=jsp&logoColor=black"/>
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=black"/>
-<img src="https://img.shields.io/badge/jquery-0868AB?style=flat&logo=jquery&logoColor=white"/> 
-<img src="https://img.shields.io/badge/Bootstrap5-magenta?style=flat&logo=Bootstrap&logoColor=black"/><br>
+<img src="https://img.shields.io/badge/jsp-white?style=flat&logo=jsp&logoColor=black"/><img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=black"/><img src="https://img.shields.io/badge/jquery-0868AB?style=flat&logo=jquery&logoColor=white"/> <img src="https://img.shields.io/badge/Bootstrap5-magenta?style=flat&logo=Bootstrap&logoColor=black"/><br>
 <img src="https://img.shields.io/badge/Java-white?style=flat&logo=java&logoColor=white"/>
 <img src="https://img.shields.io/badge/Spring-green?style=flat&logo=spring&logoColor=white"/><br>
 <img src="https://img.shields.io/badge/mariaDB-lightgray?style=flat&logo=mariadb&logoColor=white"/><br>
 <img src="https://img.shields.io/badge/Tomcat-orange?style=flat&logo=Tomcat&logoColor=white"/><br>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
