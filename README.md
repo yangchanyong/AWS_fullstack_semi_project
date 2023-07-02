@@ -326,10 +326,18 @@ Spring, JSP, MariaDB를 활용하여 식자재 쇼핑몰 구현
   </details>
     
     
-  #### 데이터베이스 연결 <br>
+#### 데이터베이스 연결 <br>
+root/src/main/resources/jdbc.properties 생성
+<br>
+
   ```sh
-    작업예정
+db.classname=net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+db.url=jdbc:log4jdbc:mariadb://'DB url':'port'/'DB name'
+db.username='username'
+db.password='password'
   ```
+
+입력
 
 ### 설치
 
@@ -349,6 +357,7 @@ Spring, JSP, MariaDB를 활용하여 식자재 쇼핑몰 구현
 
 <!-- USAGE EXAMPLES -->
 ## 사용방법 및 기능소개
+#### 기능소개
 <pre>
 1. 회원 :
     1-1. 회원가입 : id, pw, 이름, 주소, email를 입력하여 회원가입
@@ -378,6 +387,29 @@ Spring, JSP, MariaDB를 활용하여 식자재 쇼핑몰 구현
     5-1. 등급 : 회원별 등급 수정 가능 (브론즈, 골드, 실버)
     5-2. 쿠폰 발행 : 배송비 무료 쿠폰 등 결제금액을 차감할 수 있는 쿠폰 발행
     5-3. 주문내역 : 회원이 상품을 주문하면 주문내역을 확인하고 발송 상태 변경
+</pre>
+
+#### 사용방법
+<pre>
+※ 일반회원
+
+1. 회원가입
+2. 로그인 (demo 페이지 기준 ycy/1234 입력)
+3. 우측상단 메뉴탭에서 배송지 등록
+4. 상품 장바구니 추가 / 상품 바로구매
+	4-1.  장바구니에서 구매할 상품 선택 및 주문
+5. 주문 (결제시 100원 고정, 익일 04:00 환불)
+6. 게시판
+ 	6-1. 공지사항 게시판에서 각종 이슈 확인
+	6-2. 대량문의 게시판에서 등록된 상품 혹은 그외 상품 문의
+
+※ 관리자
+
+1. 로그인 (demo 페이지 기준 ycy/1234 입력)
+2. 우측상단 메뉴탭에서 관리자 페이지 이동
+3. 회원 등급 조정
+4. 회원 권한 조정
+5. 쿠폰 등록
 </pre>
 
 
@@ -451,12 +483,21 @@ Spring, JSP, MariaDB를 활용하여 식자재 쇼핑몰 구현
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Collaborator
- Team Project <br>
-조장 : 양찬용(본인) 역할 :  <a href="" target="_blank">GitHub Link</a> <br>
-조원 : 이동건 <br>
-조원 : 박연재 <br>
-조원 : 이지윤 <br>
-조원 : 이창용 <br>
+ Team Project 
+ <pre>
+공통 : DB설계, 디지털 프로토 타이핑, 서류작성 (요구사항 정의서, 테이블 명세서, TEST CASE, 인터페이스 명세서 / Etc.document 참고)
+
+양찬용(본인) : <b>조장</b>, 게시판, 상품, 회원기능 일부(수정, 탈퇴) <a href="https://github.com/yangchanyong" target="_blank">GitHub Link</a>
+
+이동건 : 데이터 크롤링(<a href="https://xn--352blxn61avvg.com/">지키미 몰</a>), 장바구니, 결제 <a href="https://github.com/DGeon" target="_blank">GitHub Link</a>
+
+박연재 : 리뷰, 상품, 관리자 <a href="https://github.com/yeonjae97" target="_blank">GitHub Link</a>
+
+이지윤 : 회원 <a href="https://github.com/jooneei17" target="_blank">GitHub Link</a>
+
+이창용 : 서류정리, 회의록작성 <a href="https://github.com/yangchanyong" target="_blank">GitHub Link</a>
+
+</pre>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -464,7 +505,83 @@ Spring, JSP, MariaDB를 활용하여 식자재 쇼핑몰 구현
 
 <!-- LICENSE -->
 ## Etc
-  
+#### 작업 서류
+<a href="https://docs.google.com/spreadsheets/d/1vR_ndYQ9Qo1sNOTPU-IdHNJidZm6kdvIH_R9J21spFo/edit?usp=sharing">
+  요구사항 정의서, 일정관리, test case, 테이블 명세서, 인터페이스 명세서 등
+</a>
+<img src="images/document.png"> <br>
+위 링크 이동시 하단 sheet를 클릭하여 서류 이동할 수 있음
+
+<br>
+
+#### PPT
+
+<a href="https://www.canva.com/design/DAFgzktHeAY/UTyodLZXtAGB1K2k8WMEqw/view?utm_content=DAFgzktHeAY&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel">PPT Link</a>
+
+<details>
+<summary>PPT Images</summary>
+<img src="images/ppt/1.png">
+<img src="images/ppt/2.png">
+<img src="images/ppt/3.png">
+<img src="images/ppt/4.png">
+<img src="images/ppt/5.png">
+<img src="images/ppt/6.png">
+<img src="images/ppt/7.png">
+<img src="images/ppt/8.png">
+<img src="images/ppt/9.png">
+<img src="images/ppt/10.png">
+<img src="images/ppt/11.png">
+<img src="images/ppt/12.png">
+<img src="images/ppt/13.png">
+<img src="images/ppt/14.png">
+<img src="images/ppt/15.png">
+<img src="images/ppt/16.png">
+<img src="images/ppt/17.png">
+<img src="images/ppt/18.png">
+<img src="images/ppt/19.png">
+<img src="images/ppt/20.png">
+<img src="images/ppt/21.png">
+<img src="images/ppt/22.png">
+<img src="images/ppt/23.png">
+<img src="images/ppt/24.png">
+<img src="images/ppt/25.png">
+<img src="images/ppt/26.png">
+<img src="images/ppt/27.png">
+<img src="images/ppt/28.png">
+<img src="images/ppt/29.png">
+<img src="images/ppt/30.png">
+<img src="images/ppt/31.png">
+</details>
+
+<br>
+
+#### Digital Prototyping
+<a href="https://ovenapp.io/view/9aaHlLOD5IvM5pwGJGYgNHA5T7OIKK3J/RZBG9">Digital Prototyping Link<a/>
+
+### 프로젝트 후기
+<pre>
+저는 회의와 서류에 중점을 두고 프로젝트를 진행했습니다. 
+팀원 한 명 한 명이 도태되는 일 없이 프로젝트를 진행하기 위해 
+매일 오전에 회의하여 진행도, 서류작업 등 보고를 받았고, 
+학원이 끝나는 시간엔 일일업무보고를 디스코드에 올려 서로 업무가 얼마나 
+진행되었는지 보고를 받았고, 저 또한 팀원들에게 보고를 했습니다. 
+그 결과 서로 막힌 부분이 있거나 시간 관계상 빨리 끝내야 하는 일이 생길 때
+던 일을 멈추고 팀원을 도와줘야 되는 경우에도 서로 막힘없이 프로젝트를 진행했고, 
+즐겁게 프로젝트를 끝낼 수 있었습니다. 
+
+
+위 프로젝트를 진행하며 아쉬웠던 점은 시간 관계상 구현하지 못한 
+일부 관리자 기능(통계,   실시간 상담, 상품 등록 및 수정 등)입니다. 
+프로젝트 설계 단계에서는 많은 관리자 기능이 있었고, 
+첫 번째 프로젝트에서 맡았던 일을 똑같이 다시 맡으면 
+관리자 기능을 많이 작업할 수 있었지만, 팀원 모두 실력 향상을 위해 
+모두 첫 프로젝트와 다른 작업을 하길 원했고 저 또한 그렇게 하길 원했습니다. 
+비록 일부 기능을 구현하지 못해서 아쉬웠지만 
+다들 큰 폭으로 실력 향상이 되어서 만족스러운 프로젝트였습니다.
+
+</pre>
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -488,9 +605,14 @@ Yang Chanyong - cksdyd93@gmail.com
 
 이 프로젝트를 사용해주시고 README를 읽어주신 여러분께 대단히 감사합니다!
 
-### Reference
-README Template : [README-Template](https://github.com/othneildrew/Best-README-Template)
+### References
+README Template : [README-Template](https://github.com/othneildrew/Best-README-Template)<br>
+Data Crawling : [지키미몰](https://xn--352blxn61avvg.com/)<br>
+Reference : [식자재왕](https://www.ewangmart.com/main/index.do?utm_source=google&utm_medium=sa&utm_campaign=sa_google_pc&utm_content=%EB%A9%94%EC%9D%B8_%EB%B8%8C%EB%9E%9C%EB%93%9C&utm_term=%EC%8B%9D%EC%9E%90%EC%9E%AC%EC%99%95&gad=1&gclid=Cj0KCQjwnf-kBhCnARIsAFlg490cNtHom16NNcR-4PXQOPzO6mPCudFADp0KuDsg63amSdgAijsBm5QaAsh6EALw_wcB)<br>
+Reference : [씨엔푸드몰](https://seanfoodmall.com/)<br>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fyangchanyong%2FAWS_fullstack_Servlet_JSP_Assignment&count_bg=%23000000&title_bg=%23A4A2A2&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fyangchanyong%2FAWS_fullstack_semi_project&count_bg=%23A1EF67&title_bg=%2300FF57&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
