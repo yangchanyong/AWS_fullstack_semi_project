@@ -512,7 +512,7 @@ db.password='password'
 
 이지윤 : 회원 <a href="https://github.com/jooneei17" target="_blank">GitHub Link</a>
 
-이창용 : 서류정리, 회의록작성 <a href="#" target="_blank">GitHub Link</a>
+이창용 : 서류정리, 회의록작성 <a href="https://github.com/starping1" target="_blank">GitHub Link</a>
 
 </pre>
 
