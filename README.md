@@ -105,8 +105,8 @@ Spring, JSP, MariaDB를 활용하여 식자재 쇼핑몰 구현
 ### Built With
 <img src="https://img.shields.io/badge/jsp-white?style=flat&logo=jsp&logoColor=black"/><img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=black"/><img src="https://img.shields.io/badge/jquery-0868AB?style=flat&logo=jquery&logoColor=white"/> <img src="https://img.shields.io/badge/Bootstrap5-magenta?style=flat&logo=Bootstrap&logoColor=black"/><br>
 <img src="https://img.shields.io/badge/Java-white?style=flat&logo=java&logoColor=white"/>
-<img src="https://img.shields.io/badge/Mybatis-green?style=flat&logo=Mybatis&logoColor=white"/>
-<img src="https://img.shields.io/badge/Spring-green?style=flat&logo=spring&logoColor=white"/><br>
+<img src="https://img.shields.io/badge/Spring-green?style=flat&logo=spring&logoColor=white"/>
+<img src="https://img.shields.io/badge/Mybatis-red?style=flat&logo=Mybatis&logoColor=white"/><br>
 <img src="https://img.shields.io/badge/mariaDB-lightgray?style=flat&logo=mariadb&logoColor=white"/><br>
 <img src="https://img.shields.io/badge/Tomcat-orange?style=flat&logo=Tomcat&logoColor=white"/><br>
 
