@@ -54,11 +54,12 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#사전준비">사전준비</a></li>
-	<li><a href="#저장소 복제">저장소 복제</a></li>
+        <li><a href="#저장소 복제">저장소 복제</a></li>
         <li><a href="#데이터베이스 구성">데이터베이스 구성</a></li>
-	<li><a href="#데이터베이스 테이블 생성 쿼리">데이터베이스 테이블 생성 쿼리</a></li>
-	<li><a href="#데이터베이스 연결">데이터베이스 연결</a></li>
-	<li><a href="#설치">설치</a></li>
+        <li><a href="#데이터베이스 테이블 생성 쿼리">데이터베이스 테이블 생성 쿼리</a></li>
+        <li><a href="#데이터베이스 연결">데이터베이스 연결</a></li>
+        <li><a href="#설치">설치</a></li>
+        <li><a href="#Web Data Crawling">Web Data Crawling</a></li>
       </ul>
     </li>
     <li>
@@ -76,7 +77,16 @@
 		    <li><a href="#작업서류">작업서류</a></li>
 		    <li><a href="#PPT">PPT</a></li>
 		    <li><a href="#Digital Prototyping">Digital Prototyping</a></li>
-		    <li><a href="#프로젝트 후기">프로젝트 후기</a></li>
+		    <li>
+              <a href="#프로젝트 후기">프로젝트 후기</a>
+              <ul>
+                <li><a href="#양찬용">양찬용</a></li>
+                <li><a href="#이동건">이동건</a></li>
+                <li><a href="#이지윤">이지윤</a></li>
+                <li><a href="#박연재">박연재</a></li>
+                <li><a href="#이창용">이창용</a></li>
+              </ul>
+            </li>
 	    </ul>
     </li>
     <li><a href="#Contact">Contact</a></li>
@@ -367,7 +377,12 @@ db.password='password'
 4. Lombok
 5. Tomcat9
 
+### Web Data Crawling
+<pre>
+이슈 :
 
+- 이미지 크롤링은 저작권의 문제로 본 코드에서는 Tests에 있는 주소를 직접 입력하여 이미지 크롤링 하여야 합니다.경로는 (C:\\semiimg) 입니다
+</pre>
 
 
 
@@ -410,13 +425,6 @@ db.password='password'
 
 6. Web Data Crawling
    - 지키미몰에 있는 카테고리 별 상품 썸네일, 상세정보, 상세이미지를 크롤링 하여 사용
-</pre>
-
-#### Web Data Crawling
-<pre>
-이슈 :
-
-- 이미지 크롤링은 저작권의 문제로 본 코드에서는 Tests에 있는 주소를 직접 입력하여 이미지 크롤링 하여야 합니다.경로는 (C:\\semiimg) 입니다
 </pre>
 
 #### 사용방법
