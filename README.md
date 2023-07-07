@@ -42,7 +42,7 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>목차</summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
