@@ -527,7 +527,7 @@ db.password='password'
 
 양찬용(본인) : <b>조장</b>, 게시판, 상품, 회원기능 일부(수정, 탈퇴) <a href="https://github.com/yangchanyong" target="_blank">GitHub Link</a>
 
-이동건 : 데이터 크롤링(<a href="https://xn--352blxn61avvg.com/">지키미 몰</a>), 장바구니, 결제 <a href="https://github.com/DGeon" target="_blank">GitHub Link</a>
+이동건 : 데이터 크롤링(<a href="https://xn--352blxn61avvg.com/">지키미 몰</a>), 장바구니, 단건구매, 결제, 구매내역 <a href="https://github.com/DGeon" target="_blank">GitHub Link</a>
 
 박연재 : 리뷰, 상품, 관리자 <a href="https://github.com/yeonjae97" target="_blank">GitHub Link</a>
 
